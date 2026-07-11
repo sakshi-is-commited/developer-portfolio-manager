@@ -12,5 +12,12 @@
         "technology": "Flask",
         "github": "https://github.com/username/expense-tracker",
         "status": "Completed"
+    },
+    {
+        "name": "NutriPlan",
+        "description": "A weekly meal plan generating AI project",
+        "technology": "Python",
+        "github": "",
+        "status": "Planned"
     }
 ]
