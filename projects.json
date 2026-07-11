@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "name": "Portfolio Manager",
+        "description": "CLI Application",
+        "technology": "Python",
+        "github": "https://github.com/sakshi-is-commited/developer-portfolio-manager",
+        "status": "In Progress"
+    },
+    {
+        "name": "Expense Tracker",
+        "description": "Personal finance tracker",
+        "technology": "Flask",
+        "github": "https://github.com/username/expense-tracker",
+        "status": "Completed"
+    }
+]

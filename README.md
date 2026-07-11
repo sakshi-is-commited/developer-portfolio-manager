@@ -9,6 +9,7 @@ Sprint 01
 ## Feature 
 - CLI Menu
 
+
 ## Tech Stack
 
 - Python
@@ -26,10 +27,6 @@ assets/
 
 main.py
 
-## Current Status
-
-CLI Menu completed.
-
 ## Architecture
 
 CLI
@@ -45,3 +42,9 @@ Storage
 ↓
 
 JSON File
+
+
+## Completed Features
+
+- CLI Menu
+- Add Project
