@@ -29,3 +29,19 @@ main.py
 ## Current Status
 
 CLI Menu completed.
+
+## Architecture
+
+CLI
+
+↓
+
+Services
+
+↓
+
+Storage
+
+↓
+
+JSON File

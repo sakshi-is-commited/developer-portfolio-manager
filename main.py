@@ -1,4 +1,4 @@
-from src.menu import display_menu
+from src.cli.menu import display_menu
 
 def main():
     while True:
