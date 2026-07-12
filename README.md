@@ -48,3 +48,4 @@ JSON File
 
 - CLI Menu
 - Add Project
+- View Projects

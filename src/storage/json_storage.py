@@ -27,3 +27,14 @@ class JSONStorage:
         #Save updated list
         with open(cls.FILE_PATH, 'w') as file:
             json.dump(projects, file, indent=4)
+    @classmethod
+    def load_projects(cls):
+        if not os.path.exists(cls.FILE_PATH):
+            return []
+
+        with open(cls.FILE_PATH, 'r') as file:
+            try:
+                projects = json.load(file)
+                return projects
+            except json.JSONDecodeError:
+                return []

@@ -49,3 +49,7 @@ class ProjectService:
         print("\n====================================")
         print("Project added successfully!")
         print("====================================\n")
+
+    @staticmethod
+    def get_all_projects():
+        return JSONStorage.load_projects()
