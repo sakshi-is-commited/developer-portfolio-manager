@@ -50,6 +50,27 @@ class ProjectService:
         print("Project added successfully!")
         print("====================================\n")
 
+
+
     @staticmethod
     def get_all_projects():
         return JSONStorage.load_projects()
+    
+    @staticmethod
+    def search_project(name):
+        projects = JSONStorage.load_projects()
+
+
+        matching_projects = []
+
+        search_text = name.strip().lower()
+
+        for project in projects:
+
+            print("Checking:", project["name"])
+
+            if search_text in project["name"].strip().lower():
+                print("Matched!")
+                matching_projects.append(project)
+
+        return matching_projects

@@ -33,7 +33,27 @@ def display_menu():
                     print(f"\nProject {idx}:")
                     for key, value in project.items():
                         print(f"{key.capitalize()}: {value}")
-
+        elif choice == "3":
+            while True:
+                name = input("\nEnter project name to search: ").strip()
+                if name:
+                    break
+                else:
+                    print("Search text cannot be empty. Please try again.")
+            
+            projects = ProjectService.search_project(name)
+            if projects:
+                print("\n====================================")
+                print(f"\nFound {len(projects)} project(s) matching '{name}':")
+                print("\n====================================")
+                for idx, project in enumerate(projects, start=1):
+                    print(f"\nProject {idx}:")
+                    for key, value in project.items():
+                        print(f"{key.capitalize()}: {value}")
+            else:
+                print("\n====================================")
+                print(f"\nNo projects found matching '{name}'.")
+                print("\n====================================")
         elif choice == "6":
             print("\nGoodbyee👋🏻")
             break
