@@ -119,3 +119,46 @@ so that I can quickly locate a specific project without browsing the entire proj
 ## Status
 
 Completed ✅
+
+# Sprint 02 - Day 04
+
+## Goal
+
+Implement the Update Project feature for the Developer Portfolio Manager.
+
+## User Story
+
+As a developer,
+
+I want to update the details of an existing project,
+
+so that I can keep my portfolio information accurate and up to date.
+
+## Today's Feature
+
+- Update Project
+
+## Definition of Done
+
+- User can search for a project by its name.
+- Existing project details are displayed before updating.
+- User can modify:
+  - Project Name
+  - Description
+  - Technology
+  - GitHub Link
+  - Status
+- Existing values are retained when the user leaves a field blank.
+- Project Name validation implemented.
+- Technology validation implemented.
+- Status validation implemented.
+- Updated project is saved to `projects.json`.
+- Appropriate message displayed when the project is not found.
+- Success message displayed after updating the project.
+- Application returns to the main menu after updating.
+- Manual testing completed.
+- Code committed using a feature branch.
+
+## Status
+
+Completed ✅

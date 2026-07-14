@@ -38,3 +38,8 @@ class JSONStorage:
                 return projects
             except json.JSONDecodeError:
                 return []
+    
+    @classmethod
+    def save_all_projects(cls, projects):
+        with open(cls.FILE_PATH, 'w') as file:
+            json.dump(projects, file, indent=4)

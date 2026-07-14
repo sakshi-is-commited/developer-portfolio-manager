@@ -8,16 +8,16 @@
     },
     {
         "name": "Expense Tracker",
-        "description": "Personal finance tracker",
+        "description": "Personal Finance Tracker",
         "technology": "Flask",
         "github": "https://github.com/username/expense-tracker",
-        "status": "Completed"
+        "status": "In Progress"
     },
     {
         "name": "NutriPlan",
-        "description": "A weekly meal plan generating AI project",
+        "description": "An AI based project for generating weekly meal plans.",
         "technology": "Python",
-        "github": "",
-        "status": "Planned"
+        "github": "https://github.com/username/nutri-plan",
+        "status": "In Progress"
     }
 ]

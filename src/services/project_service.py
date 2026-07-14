@@ -74,3 +74,59 @@ class ProjectService:
                 matching_projects.append(project)
 
         return matching_projects
+    
+    def update_project():
+        projects = JSONStorage.load_projects()
+
+        if not projects:
+            print("No projects found.")
+            return
+
+        print("\nSelect a project to update:")
+        for idx, project in enumerate(projects, start=1):
+            print(f"{idx}. {project['name']}")
+
+        while True:
+            try:
+                choice = int(input("Enter the project number: "))
+                if 1 <= choice <= len(projects):
+                    selected_project = projects[choice - 1]
+                    break
+                else:
+                    print("Invalid choice. Please try again.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+        # Update project details
+        print("\nEnter new details (leave blank to keep current value):")
+        new_name = input(f"Name [{selected_project['name']}]: ") or selected_project['name']
+        new_description = input(f"Description [{selected_project['description']}]: ") or selected_project['description']
+        new_technology = input(f"Technology [{selected_project['technology']}]: ") or selected_project['technology']
+        new_github = input(f"GitHub Link [{selected_project['github']}]: ") or selected_project['github']
+        new_status = input(f"Status [{selected_project['status']}]: ") or selected_project['status']
+
+        # Validate updated fields
+        if not validate_name(new_name):
+            print("Invalid name. Update aborted.")
+            return
+        if not validate_technology(new_technology):
+            print("Invalid technology. Update aborted.")
+            return
+        if not validate_status(new_status):
+            print("Invalid status. Update aborted.")
+            return
+
+        # Update the project
+        selected_project.update({
+            "name": new_name,
+            "description": new_description,
+            "technology": new_technology,
+            "github": new_github,
+            "status": new_status
+        })
+
+        JSONStorage.save_all_projects(projects)
+
+        print("\n====================================")
+        print("Project updated successfully!")
+        print("====================================\n")

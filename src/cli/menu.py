@@ -54,6 +54,9 @@ def display_menu():
                 print("\n====================================")
                 print(f"\nNo projects found matching '{name}'.")
                 print("\n====================================")
+
+        elif choice == "4":
+            ProjectService.update_project()
         elif choice == "6":
             print("\nGoodbyee👋🏻")
             break
