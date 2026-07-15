@@ -130,3 +130,13 @@ class ProjectService:
         print("\n====================================")
         print("Project updated successfully!")
         print("====================================\n")
+    
+    @staticmethod
+    def delete_project(project_index):
+
+        projects = JSONStorage.load_projects()
+
+        if project_index < 0 or project_index >= len(projects):
+            return False
+        
+        return JSONStorage.delete_project(project_index)

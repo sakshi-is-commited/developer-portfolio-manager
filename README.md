@@ -49,3 +49,6 @@ JSON File
 - CLI Menu
 - Add Project
 - View Projects
+- Search Projects
+- Update Project
+- Delete Project

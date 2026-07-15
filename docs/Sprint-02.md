@@ -162,3 +162,40 @@ so that I can keep my portfolio information accurate and up to date.
 ## Status
 
 Completed ✅
+
+# Sprint 02 - Day 05
+
+## Goal
+
+Implement the Delete Project feature for the Developer Portfolio Manager.
+
+## User Story
+
+As a developer,
+
+I want to delete projects that are no longer relevant,
+
+so that I can keep my portfolio organized and up to date.
+
+## Today's Feature
+
+- Delete Project
+
+## Definition of Done
+
+- User can view a numbered list of all saved projects.
+- User can select a project to delete by entering its number.
+- Selected project details (Name, Technology, and Status) are displayed for verification.
+- User is prompted to confirm deletion using **Y/N**.
+- Deletion is cancelled if the user selects **N**.
+- Only the selected project is removed from `projects.json`.
+- Remaining projects remain unchanged.
+- Updated project list is saved successfully.
+- Success message is displayed after deletion.
+- Application returns to the main menu after the operation.
+- Manual testing completed.
+- Code committed using a feature branch.
+
+## Status
+
+Completed ✅

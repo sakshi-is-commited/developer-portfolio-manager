@@ -43,3 +43,25 @@ class JSONStorage:
     def save_all_projects(cls, projects):
         with open(cls.FILE_PATH, 'w') as file:
             json.dump(projects, file, indent=4)
+
+    @classmethod
+    def delete_project(cls, index):
+        """
+        Delete a project at the specified index.
+
+        Returns:
+            True -> Project deleted successfully.
+            False -> Invalid index or deletion failed.
+        """
+
+        projects = cls.load_projects()
+
+        if index < 0 or index >= len(projects):
+            return False
+        
+        projects.pop(index)
+
+        with open(cls.FILE_PATH, 'w') as file:
+            json.dump(projects, file, indent=4)
+        
+        return True

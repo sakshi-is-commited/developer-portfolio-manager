@@ -57,6 +57,61 @@ def display_menu():
 
         elif choice == "4":
             ProjectService.update_project()
+
+        elif choice == "5":
+            projects = ProjectService.get_all_projects()
+
+            if not projects:
+                print("\nNo projects available to delete.\n")
+                continue
+            print("\nSelect a project to delete:\n")
+
+            for index, project in enumerate(projects, start=1):
+                print(f"{index}. {project['name']}")
+
+            while True:
+                try:
+                    project_number = int(input("\nEnter project number: "))
+
+                    if 1 <= project_number <= len(projects):
+                        break
+                    print("Invalid project number. Please try again.")
+                except ValueError:
+                    print("Invalid input. Please enter a valid project number.")
+
+            selected_project = projects[project_number - 1]
+            print("\n====================================")
+            print("Project Selected")
+            print("====================================")
+
+            print(f"Name       : {selected_project['name']}")
+            print(f"Technology : {selected_project['technology']}")
+            print(f"Status     : {selected_project['status']}")
+
+            while True:
+
+                confirmation = input(
+                    "\nAre you sure you want to delete this project? (Y/N): "
+                ).strip().upper()
+
+                if confirmation == "N":
+                    print("\nDeletion cancelled.\n")
+                    break
+
+                elif confirmation == "Y":
+                    success = ProjectService.delete_project(project_number - 1)
+
+                    if success:
+                        print("\n====================================")
+                        print("Project deleted successfully!")
+                        print("====================================\n")
+                    else:
+                        print("\nFailed to delete project.\n")
+                    break
+
+                else:
+                    print("Invalid input. Please enter Y or N.")
+
         elif choice == "6":
             print("\nGoodbyee👋🏻")
             break
