@@ -199,3 +199,167 @@ so that I can keep my portfolio organized and up to date.
 ## Status
 
 Completed ✅
+
+# Sprint 02 – Refactoring, Testing & Documentation
+
+**Sprint Duration:** 2 Days
+
+---
+
+# 🎯 Sprint Goal
+
+Improve the quality, maintainability, and reliability of the Developer Portfolio Manager by refactoring the codebase, strengthening exception handling, adding automated unit tests, and preparing comprehensive project documentation.
+
+---
+
+# 👤 User Story
+
+**As a developer,**
+
+I want the application to have a clean architecture, robust error handling, automated tests, and clear documentation,
+
+**so that**
+
+the project is reliable, maintainable, and ready to showcase in my professional portfolio.
+
+---
+
+# ✅ Work Completed
+
+## Phase 1 – Code Refactoring
+
+- Created reusable helper functions to eliminate duplicate code.
+- Improved CLI formatting using common utility methods.
+- Centralized success, warning, and error message formatting.
+- Simplified repeated validation logic.
+- Improved code readability and maintainability.
+
+---
+
+## Phase 2 – User Experience Improvements
+
+- Redesigned the CLI menu with improved formatting.
+- Enhanced project display with aligned labels and consistent spacing.
+- Added formatted success, warning, and error messages.
+- Improved readability of project details and menu navigation.
+
+---
+
+## Phase 3 – Exception Handling
+
+Implemented robust exception handling for:
+
+- Missing JSON files
+- Invalid JSON data
+- Permission errors
+- Unexpected runtime exceptions
+
+The application now displays meaningful messages instead of crashing and automatically initializes an empty portfolio when necessary.
+
+---
+
+## Phase 4 – Unit Testing
+
+Created automated tests using Python's built-in **unittest** framework.
+
+### Test Cases Implemented
+
+- ✔ Add Project
+- ✔ Search Existing Project
+- ✔ Search Missing Project
+- ✔ Update Project
+- ✔ Delete Project
+
+Successfully executed all tests using:
+
+```bash
+python3 -m unittest discover tests
+```
+
+Result:
+
+```text
+.....
+----------------------------------------------------------------------
+Ran 5 tests
+
+OK
+```
+
+---
+
+## Phase 5 – Documentation
+
+Updated the project documentation by creating:
+
+- README.md
+- PROJECT_SHOWCASE.md
+
+Documentation now includes:
+
+- Project Overview
+- Architecture
+- Features
+- Installation Guide
+- Folder Structure
+- Future Improvements
+- Testing Instructions
+
+---
+
+# 🏗 Architecture Followed
+
+```text
+CLI
+ │
+ ▼
+Service Layer
+ │
+ ▼
+Storage Layer
+ │
+ ▼
+projects.json
+```
+
+---
+
+# 📂 Deliverables
+
+- Refactored source code
+- Improved CLI user interface
+- Exception handling implementation
+- Unit test suite
+- Updated README.md
+- PROJECT_SHOWCASE.md
+
+---
+
+# ✅ Definition of Done
+
+- Reusable helper functions implemented.
+- CLI output polished and consistent.
+- Exception handling added across storage operations.
+- Unit tests written and passing.
+- Documentation updated.
+- Project structure cleaned and organized.
+- Application verified through manual and automated testing.
+
+---
+
+# 📚 Key Learnings
+
+During this sprint, I learned:
+
+- How code refactoring improves readability and maintainability.
+- The importance of separating business logic from user interaction.
+- How to implement robust exception handling in Python.
+- How automated testing improves software reliability.
+- Best practices for documenting projects professionally.
+- How layered architecture makes applications easier to scale and maintain.
+
+---
+
+# 🚀 Sprint Outcome
+
+Sprint 02 successfully transformed the Developer Portfolio Manager from a functional CLI application into a more polished, maintainable, and portfolio-ready project by incorporating software engineering best practices such as clean architecture, exception handling, automated testing, and comprehensive documentation.

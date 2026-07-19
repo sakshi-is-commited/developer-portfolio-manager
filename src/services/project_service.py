@@ -1,5 +1,6 @@
 from src.models.project import create_project
 from src.storage.json_storage import JSONStorage
+from src.utils.helpers import get_valid_input, print_error, print_header, print_success
 from src.utils.validators import (validate_name, validate_technology, validate_status)
 
 
@@ -8,47 +9,47 @@ class ProjectService:
     def add_project():
 
         #Project Name
-        while True:
-            name = input("Enter project name: ")
-            if validate_name(name):
-                break
-            else:
-                print("Invalid name. Please try again.")
+        name = get_valid_input(
+            "Enter project name: ",
+            validate_name,
+            "Invalid name. Please try again."
+    )
 
         #Project Description
         description = input("Enter project description: ")
 
         #Project Technology
-        while True:
-            technology = input("Enter project technology: ")
-            if validate_technology(technology):
-                break
-            else:
-                print("Invalid technology. Please try again.")
+        technology = get_valid_input(
+            "Enter project technology: ",
+            validate_technology,
+            "Invalid technology. Please try again."
+        )
 
         #Project GitHub Link
         github = input("Enter project GitHub link: ")
 
         #Project Status
-        while True:
-            print("\nSelect project status:")
-            print("Planned")
-            print("In Progress")
-            print("Completed")
+        #while True:
+        print("\nSelect project status:")
+        print("Planned")
+        print("In Progress")
+        print("Completed")
 
-            status = input("Enter project status: ")
-            if validate_status(status):
-                break
-            print("Invalid status. Please try again.\n")
+        status = get_valid_input(
+            "Enter project status: ",
+            validate_status,
+            "Invalid status. Please try again."
+        )
+            
 
         # Create project dictionary
         project = create_project(name, description, technology, github, status)
 
         JSONStorage.save_project(project)
 
-        print("\n====================================")
-        print("Project added successfully!")
-        print("====================================\n")
+        
+        print_success("Project added successfully!")
+        
 
 
 
@@ -67,14 +68,15 @@ class ProjectService:
 
         for project in projects:
 
-            print("Checking:", project["name"])
+            #print("Checking:", project["name"])
 
             if search_text in project["name"].strip().lower():
-                print("Matched!")
+                #print("Matched!")
                 matching_projects.append(project)
 
         return matching_projects
     
+    @staticmethod
     def update_project():
         projects = JSONStorage.load_projects()
 
@@ -117,20 +119,18 @@ class ProjectService:
             return
 
         # Update the project
-        selected_project.update({
+        updated_project = {
             "name": new_name,
             "description": new_description,
             "technology": new_technology,
             "github": new_github,
             "status": new_status
-        })
+        }
 
-        JSONStorage.save_all_projects(projects)
-
-        print("\n====================================")
-        print("Project updated successfully!")
-        print("====================================\n")
-    
+        if ProjectService.update_project_data(choice - 1, updated_project):
+            print_success("Project updated successfully!")
+        else:
+            print_error("Unable to update project")
     @staticmethod
     def delete_project(project_index):
 
@@ -140,3 +140,15 @@ class ProjectService:
             return False
         
         return JSONStorage.delete_project(project_index)
+    
+    @staticmethod
+    def update_project_data(index, updated_project):
+
+        projects = JSONStorage.load_projects()
+
+        if index < 0 or index >= len(projects):
+            return False
+        
+        projects[index] = updated_project
+
+        return JSONStorage.save_all_projects(projects)

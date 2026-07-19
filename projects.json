@@ -1,16 +1,9 @@
 [
     {
-        "name": "Portfolio Manager",
-        "description": "CLI Application",
+        "name": "Expense tracker",
+        "description": "Finance App",
         "technology": "Python",
-        "github": "https://github.com/sakshi-is-commited/developer-portfolio-manager",
-        "status": "In Progress"
-    },
-    {
-        "name": "NutriPlan",
-        "description": "An AI based project for generating weekly meal plans.",
-        "technology": "Python",
-        "github": "https://github.com/username/nutri-plan",
+        "github": "github.com/expense-tracker",
         "status": "In Progress"
     }
 ]
