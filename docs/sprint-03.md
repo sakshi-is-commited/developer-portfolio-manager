@@ -114,3 +114,161 @@ src/
 ### 🔜 Next Step
 
 Migrate the **Add Project** functionality from JSON storage to PostgreSQL while preserving the existing service layer.
+
+---
+
+# Day 02 — Add Project Migration
+
+## 📅 Date
+
+23 July 2026
+
+---
+
+## 🎯 Goal
+
+Migrate the **Add Project** functionality from JSON storage to PostgreSQL without changing the CLI experience.
+
+---
+
+## 👤 User Story
+
+**As a developer,**
+
+I want the application to store newly created projects in PostgreSQL,
+
+so that project data is stored securely in a relational database and the application becomes scalable and production-ready.
+
+---
+
+## ✅ Tasks Completed
+
+- Implemented the `add_project()` method inside `project_repository.py`.
+- Executed parameterized SQL INSERT queries.
+- Added transaction commit after successful insertion.
+- Implemented exception handling with rollback support.
+- Ensured database connections and cursors are closed properly.
+- Updated the Service Layer to use the Repository instead of JSON storage.
+- Preserved the existing CLI interface without modifying the user experience.
+- Successfully inserted projects into the PostgreSQL `projects` table.
+- Verified inserted records using SQL queries.
+
+---
+
+## 🏗️ Architecture Evolution
+
+### Previous
+
+CLI
+
+↓
+
+Service
+
+↓
+
+JSON Storage
+
+---
+
+### Current
+
+CLI
+
+↓
+
+Service
+
+↓
+
+Project Repository
+
+↓
+
+PostgreSQL Database
+
+---
+
+## 📂 Files Modified
+
+src/
+
+database/
+
+- project_repository.py
+
+services/
+
+- project_service.py
+
+---
+
+## 💡 Key Learnings
+
+- Learned how to execute parameterized SQL queries using `psycopg2`.
+- Understood how the Repository Pattern isolates database operations from business logic.
+- Learned how SQL transactions work using `commit()` and `rollback()`.
+- Gained practical experience handling PostgreSQL exceptions.
+- Reinforced the importance of keeping the CLI independent from the storage layer.
+
+---
+
+## 🐞 Challenges Faced
+
+### Issue 1
+
+```
+ModuleNotFoundError: No module named 'src'
+```
+
+**Cause**
+
+The repository file was executed directly instead of as a Python module.
+
+**Solution**
+
+Executed the module using:
+
+```bash
+python3 -m src.database.project_repository
+```
+
+---
+
+### Issue 2
+
+```
+Database Error:
+not all arguments converted during string formatting
+```
+
+**Cause**
+
+Incorrect formatting while passing SQL query parameters.
+
+**Solution**
+
+Corrected the parameterized query structure and verified successful insertion into PostgreSQL.
+
+---
+
+## ✔ Definition of Done
+
+- Repository implemented.
+- Service layer updated.
+- PostgreSQL insertion successful.
+- SQL query verified.
+- Application stores projects in PostgreSQL.
+- Existing CLI functionality preserved.
+
+---
+
+## 🚀 Status
+
+**Completed ✅**
+
+---
+
+## 🔜 Next Goal
+
+Migrate the **View Projects** functionality from JSON storage to PostgreSQL.

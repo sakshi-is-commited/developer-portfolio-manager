@@ -1,7 +1,7 @@
 from src.models.project import create_project
-from src.storage.json_storage import JSONStorage
 from src.utils.helpers import get_valid_input, print_error, print_header, print_success
 from src.utils.validators import (validate_name, validate_technology, validate_status)
+from src.database.project_repository import ProjectRepository
 
 
 class ProjectService:
@@ -43,13 +43,18 @@ class ProjectService:
             
 
         # Create project dictionary
-        project = create_project(name, description, technology, github, status)
+        project = create_project(
+            name,
+            description,
+            technology,
+            github,
+            status
+        )
 
-        JSONStorage.save_project(project)
-
-        
-        print_success("Project added successfully!")
-        
+        if ProjectRepository.add_project(project):
+            print_success("Project added successfully!")
+        else:
+            print_error("Unable to save project")
 
 
 

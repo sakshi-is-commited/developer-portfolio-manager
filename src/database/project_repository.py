@@ -1,29 +1,62 @@
-import psycopg2
+from src.database.db import get_connection
 
 
 class ProjectRepository:
-
     @staticmethod
-    def get_connection():
+    def add_project(project):
 
-        return psycopg2.connect(
-            host="localhost",
-            database="developer_portfolio",
-            user="sakshiadarkar",
-            password=""
-        )
+        connection = None
+        cursor = None
+
+        try:
+            connection = get_connection()
+            cursor = connection.cursor()
+
+            query = """
+                INSERT INTO projects (name, description, technology, github, status)
+                VALUES (%s, %s, %s, %s, %s)
+            """
+
+            cursor.execute(
+                query,
+                (
+                    project["name"],
+                    project["description"],
+                    project["technology"],
+                    project["github"],
+                    project["status"]
+                )
+            )
+
+            connection.commit()
+
+            return True
+        except Exception as e:
+            print(f"Database Error: {e}")
+
+            if connection:
+                connection.rollback()
+            return False
+        finally:
+            if cursor:
+                cursor.close()
+            if connection:
+                connection.close()
+    
     
 if __name__ == "__main__":
 
-    connection = ProjectRepository.get_connection()
+    project = {
+        "name": "Developer Portfolio Manager",
+        "description": "CLI Project",
+        "technology": "Python",
+        "github": "https://github.com/example/project",
+        "status": "In Progress"
+    }
 
-    cursor = connection.cursor()
+    success = ProjectRepository.add_project(project)
 
-    cursor.execute("SELECT * FROM projects;")
-
-    projects = cursor.fetchall()
-
-    print(projects)
-
-    cursor.close()
-    connection.close()
+    if success:
+        print("✅ Project inserted successfully!")
+    else:
+        print("❌ Failed to insert project.")
